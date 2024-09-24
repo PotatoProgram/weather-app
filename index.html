@@ -19,8 +19,21 @@
       crossorigin="anonymous"
     ></script>
 
-    <div id="container">
-      <div id="app-upper-header"></div>
+    <div class="container">
+      <form>
+        <div id="app-upper-header" class="row">
+          <div class="col-9">
+            <input
+              class="form-control search-input"
+              type="search"
+              placeholder="Enter a city..."
+            />
+          </div>
+          <div class="col-3">
+            <input class="btn btn-primary w-100" type="submit" value="Search" />
+          </div>
+        </div>
+      </form>
       <hr />
       <div id="weather-upper"></div>
       <div id="weather-lower"></div>
