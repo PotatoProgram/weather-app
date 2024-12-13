@@ -2,7 +2,7 @@ let searchFormElement = document.querySelector("#search-form");
 console.log(searchFormElement);
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 //default city for app
-searchCity("San Francisco");
+searchCity("SanFrancisco");
 
 function handleSearchSubmit(event) {
   event.preventDefault();
