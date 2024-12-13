@@ -2,7 +2,7 @@ let searchFormElement = document.querySelector("#search-form");
 console.log(searchFormElement);
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 //default city for app
-searchCity("SanFrancisco");
+searchCity("San Francisco");
 
 function handleSearchSubmit(event) {
   event.preventDefault();
@@ -22,7 +22,7 @@ function searchCity(city) {
 }
 
 function updateWeatherInfo(response) {
-  console.log(response.data);
+  console.log(response.data.condition.description);
   let cityElement = document.querySelector("#selectedCity");
   let temperature = response.data.temperature.current;
   let temperatureElement = document.querySelector("#temperature");
