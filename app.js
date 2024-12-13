@@ -15,7 +15,7 @@ function handleSearchSubmit(event) {
 function searchCity(city) {
   //make an api call and update the interface of the page
   let apiKey = "a3o950fc274379347b6a44aft08a3cb0";
-  let apiURL = 'https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric';
+  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   console.log(apiURL);
   //use axios to get weather info
   axios.get(apiURL).then(updateWeatherInfo);
