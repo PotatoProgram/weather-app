@@ -24,9 +24,14 @@ function searchCity(city) {
 function updateWeatherInfo(response) {
   console.log(response.data.condition.description);
   let cityElement = document.querySelector("#selectedCity");
+  let descriptionElement = document.querySelector("#description");
   let temperature = response.data.temperature.current;
   let temperatureElement = document.querySelector("#temperature");
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
+  descriptionElement.innerHTML = response.data.condition.description;
+}
+
+function capitalize() {
   
 }
