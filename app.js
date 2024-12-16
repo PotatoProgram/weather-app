@@ -23,14 +23,17 @@ function searchCity(city) {
 
 function updateWeatherInfo(response) {
   console.log(response.data.condition.description);
+
   let cityElement = document.querySelector("#selectedCity");
+
   let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.condition.description;
+  capitalize();
+
   let temperature = response.data.temperature.current;
   let temperatureElement = document.querySelector("#temperature");
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
-  descriptionElement.innerHTML = response.data.condition.description;
-  capitalize();
 
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
@@ -38,7 +41,9 @@ function updateWeatherInfo(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
 
-  let timeElement = document.querySelector("#time")
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+  timeElement.innerHTML = formatDate(date);
 
   function capitalize() {
     let description = response.data.condition.description;
@@ -47,6 +52,14 @@ function updateWeatherInfo(response) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
     descriptionElement.innerHTML = description;
+  }
+
+  function formatDate(date) {
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let day = days[date.getDay()];
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
+    return `${day}, ${hours}:${minutes}`;
   }
 }
 
