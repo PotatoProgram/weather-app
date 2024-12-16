@@ -31,6 +31,15 @@ function updateWeatherInfo(response) {
   temperatureElement.innerHTML = Math.round(temperature);
   descriptionElement.innerHTML = response.data.condition.description;
   capitalize();
+
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+
+  let timeElement = document.querySelector("#time")
+
   function capitalize() {
     let description = response.data.condition.description;
     description = description
