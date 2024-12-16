@@ -2,7 +2,7 @@ let searchFormElement = document.querySelector("#search-form");
 console.log(searchFormElement);
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 //default city for app
-searchCity("San Francisco");
+searchCity("Houston");
 
 function handleSearchSubmit(event) {
   event.preventDefault();
@@ -30,8 +30,14 @@ function updateWeatherInfo(response) {
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
   descriptionElement.innerHTML = response.data.condition.description;
+  capitalize();
+  function capitalize() {
+    let description = response.data.condition.description;
+    description = description
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+    descriptionElement.innerHTML = description;
+  }
 }
 
-function capitalize() {
-  
-}
