@@ -43,24 +43,31 @@
           <div class="col-6">
             <h1 class="weather-app-city" id="selectedCity">City</h1>
             <ul>
-              <li><span id="time">Time</span>, <span id="description">Description</span></li>
               <li>
-                Humidity: <strong id="humidity">Humidity%</strong>, Wind: <strong id="wind">Windspeed km/h</strong>
+                <span id="time">Time</span>,
+                <span id="description">Description</span>
+              </li>
+              <li>
+                Humidity: <strong id="humidity">Humidity%</strong>, Wind:
+                <strong id="wind">Windspeed km/h</strong>
               </li>
             </ul>
           </div>
+          <!--get ready for the most scuffed possible implementation of this:-->
+          <div class="col-3"></div> <!--this is here on purpose-->
+          <div class="weather-app-temperature-container col-3">
+              <span id="temperature">Temperature</span>
+              <span class="unit"> °C </span>
+              <div id="icon">
+                <img src="#" />
+              </div>
+            </div>
         </div>
       </div>
       <div id="weather-lower">
         <div class="col-lg-6 col-md-6 col-sm-8">
           <div class="temperature-container d-flex justify-content-end">
             <canvas width="52" height="52"></canvas>
-            <div class="weather-app-temperature-container">
-              <div id="icon">
-                <img src="#">
-              </div>
-              <span id="temperature">Temperature</span> <span class="unit"> °C </span>
-            </div>
           </div>
         </div>
         <div class="weatherForecast row">

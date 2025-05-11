@@ -46,7 +46,7 @@ function updateWeatherInfo(response) {
   timeElement.innerHTML = formatDate(date);
 
   let iconElement = document.querySelector("#icon");
-  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app=icon"/>"`;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`;
 
   function capitalize() {
     let description = response.data.condition.description;
