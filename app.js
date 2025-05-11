@@ -4,6 +4,30 @@ searchFormElement.addEventListener("submit", handleSearchSubmit);
 //default city for app
 searchCity("Houston");
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = ""
+  
+  days.forEach(function (day) {
+    forecastHTML += `<div class="col">
+            <div class="weatherForecastPreview">
+              <div class="forecast-time">${day}</div>
+              <canvas width="38" height="38"></canvas>
+              <div class="forecast-temperature">
+                <span class="forecast-temperature-max">14</span>
+                <span class="forecast-temperature-min">18</span>
+              </div>
+            </div>
+          </div>`;
+  });
+  forecast.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
@@ -51,9 +75,9 @@ function updateWeatherInfo(response) {
   function capitalize() {
     let description = response.data.condition.description;
     description = description
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
     descriptionElement.innerHTML = description;
   }
 
@@ -65,4 +89,3 @@ function updateWeatherInfo(response) {
     return `${day}, ${hours}:${minutes}`;
   }
 }
-

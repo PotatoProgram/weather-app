@@ -13,8 +13,8 @@
     <title>Weather App</title>
   </head>
   <body>
-    <noscript> 
-      no javascript lmao, things might be broken <br>
+    <noscript>
+      no javascript lmao, things might be broken <br />
       actually, things are probably broken
     </noscript>
     <script
@@ -57,14 +57,15 @@
             </ul>
           </div>
           <!--get ready for the most scuffed possible implementation of this:-->
-          <div class="col-3"></div> <!--this is here on purpose-->
+          <div class="col-3"></div>
+          <!--this is here on purpose-->
           <div class="weather-app-temperature-container col-3">
-              <span id="temperature">Temperature</span>
-              <span class="unit"> °C </span>
-              <div id="icon">
-                <img src="#" />
-              </div>
+            <span id="temperature">Temperature</span>
+            <span class="unit"> °C </span>
+            <div id="icon">
+              <img src="#" />
             </div>
+          </div>
         </div>
       </div>
       <div id="weather-lower">
@@ -73,57 +74,8 @@
             <canvas width="52" height="52"></canvas>
           </div>
         </div>
-        <div class="weatherForecast row">
-          <div class="col">
-            <div class="weatherForecastPreview">
-              <div class="forecast-time">Wed</div>
-              <canvas width="38" height="38"></canvas>
-              <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="weatherForecastPreview">
-              <div class="forecast-time">Wed</div>
-              <canvas width="38" height="38"></canvas>
-              <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="weatherForecastPreview">
-              <div class="forecast-time">Wed</div>
-              <canvas width="38" height="38"></canvas>
-              <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="weatherForecastPreview">
-              <div class="forecast-time">Wed</div>
-              <canvas width="38" height="38"></canvas>
-              <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="weatherForecastPreview">
-              <div class="forecast-time">Wed</div>
-              <canvas width="38" height="38"></canvas>
-              <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
-              </div>
-            </div>
-          </div>
+        <div class="weatherForecast row" id="forecast">
+          
         </div>
       </div>
     </div>
