@@ -4,26 +4,38 @@ searchFormElement.addEventListener("submit", handleSearchSubmit);
 //default city for app
 searchCity("Houston");
 
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
+function getForecast(city) {
+  let apiKey = "a3o950fc274379347b6a44aft08a3cb0";
+  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiURL).then(displayForecast);
+}
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.daily;
+  console.log(forecast);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let forecastHTML = ""
-  
-  days.forEach(function (day) {
-    forecastHTML += `<div class="col">
+  let forecastHTML = "";
+
+  forecast.forEach(function (day, index) {
+    if (index < 7) {
+      let date = new Date(day.time*1000);
+      let dayName = days[date.getDay()];
+      forecastHTML += `<div class="col">
             <div class="weatherForecastPreview">
-              <div class="forecast-time">${day}</div>
-              <canvas width="38" height="38"></canvas>
+              <div class="forecast-time">${dayName}</div>
+              <div class="weather-forecast-icon">
+              <img src="${day.condition.icon_url}" alt="${day.condition.description}" class="weather-forecast-icon-img" />
+              </div>
               <div class="forecast-temperature">
-                <span class="forecast-temperature-max">14</span>
-                <span class="forecast-temperature-min">18</span>
+                <span class="forecast-temperature-max">${Math.round(day.temperature.maximum)}°C</span>
+                <span class="forecast-temperature-min">${Math.round(day.temperature.minimum)}°C</span>
               </div>
             </div>
-          </div>`;
+          </div>`;}
   });
-  forecast.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 displayForecast();
@@ -31,6 +43,7 @@ displayForecast();
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
+  let cityElement = document.querySelector("#selectedCity");
   console.log(searchInput.value);
   cityElement.innerHTML = searchInput.value;
   searchCity(searchInput.value);
@@ -79,6 +92,8 @@ function updateWeatherInfo(response) {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     descriptionElement.innerHTML = description;
+
+    getForecast(response.data.city);
   }
 
   function formatDate(date) {
